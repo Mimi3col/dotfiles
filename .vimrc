@@ -123,6 +123,12 @@ Plug 'wgwoods/vim-systemd-syntax'
 Plug 'towolf/vim-helm'
 Plug 'hashivim/vim-terraform'
 
+" vimWiki
+Plug 'vimwiki/vimwiki'
+
+" auto pairs
+Plug 'chun-yang/auto-pairs'
+
 call plug#end()
 
 " -----------------------------------------------------------------------------
@@ -217,9 +223,8 @@ set backspace=indent,eol,start
 set backupdir=/tmp//,.
 set clipboard=unnamedplus,unnamed
 set colorcolumn=80
-set complete+=kspell
 set completeopt=menuone,longest
-set cursorline
+set complete+=kspell
 set directory=/tmp//,.
 set encoding=utf-8
 set expandtab smarttab
@@ -252,6 +257,7 @@ set softtabstop=2
 set spelllang=en_us
 set splitbelow
 set splitright
+set cursorline
 set tabstop=2
 set textwidth=0
 set ttimeout
@@ -268,6 +274,7 @@ set whichwrap=b,s,<,>
 set wildmenu
 set wildmode=full
 set wrap
+filetype plugin on
 
 runtime! macros/matchit.vim
 
@@ -390,6 +397,7 @@ inoremap <expr> <CR> pumvisible() ? "<C-y>" :"<CR>"
 
 " Cancel the complete menu item like CTRL+e would.
 inoremap <expr> <Left> pumvisible() ? "<C-e>" : "<Left>"
+
 
 " -----------------------------------------------------------------------------
 " Basic autocommands
@@ -652,6 +660,12 @@ let g:mkdp_markdown_css=fnameescape($HOME).'/.local/lib/github-markdown-css/gith
 
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
+"..............................................................................
+" vimwiki/vimWiki
+"..............................................................................
+
+let g:vimwiki_list = [{'path': '~/mywiki/'}]
 
 " .............................................................................
 " janko/vim-test

@@ -76,7 +76,8 @@ def get_windows_user():
 
 HOME = str(Path.home())
 
-TERMINAL_CONFIG = f'/c/Users/{get_windows_user()}/AppData/Local/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json'  # noqa: E501
+#TERMINAL_CONFIG = f'/c/Users/{get_windows_user()}/AppData/Local/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json'  # noqa: E501
+TERMINAL_CONFIG = f'/mnt/c/Users/mimi3/AppData/Local/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json'
 SHELL_CONFIG = f'{os.environ.get("XDG_CONFIG_HOME")}/zsh/.zshrc'
 TMUX_CONFIG = f'{HOME}/.tmux.conf'
 VIM_CONFIG = f'{HOME}/.vimrc'
