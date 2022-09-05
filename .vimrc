@@ -9,9 +9,6 @@
 " Specify a directory for plugins.
 call plug#begin('~/.vim/plugged')
 
-" Atom One Dark / Light theme.
-Plug 'rakr/vim-one'
-
 " Gruvbox Community theme.
 Plug 'gruvbox-community/gruvbox'
 
@@ -34,12 +31,6 @@ Plug 'lambdalisue/fern-mapping-mark-children.vim'
 
 " Helpers for moving and manipulating files / directories.
 Plug 'tpope/vim-eunuch'
-
-" Run a diff on 2 directories.
-Plug 'will133/vim-dirdiff'
-
-" Run a diff on 2 blocks of text.
-Plug 'AndrewRadev/linediff.vim'
 
 " Add spelling errors to the quickfix list (vim-ingo-library is a dependency).
 Plug 'inkarkat/vim-ingo-library' | Plug 'inkarkat/vim-SpellCheck'
@@ -86,45 +77,27 @@ Plug 'junegunn/limelight.vim'
 " Distraction free writing by removing UI elements and centering everything.
 Plug 'junegunn/goyo.vim'
 
-" A bunch of useful language related snippets (ultisnips is the engine).
-Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
-
 " Automatically show Vim's complete menu while typing.
 Plug 'vim-scripts/AutoComplPop'
 
-" Run test suites for various languages.
-Plug 'janko/vim-test'
-
 " Languages and file types.
-Plug 'cakebaker/scss-syntax.vim'
-Plug 'chr4/nginx.vim'
-Plug 'chrisbra/csv.vim'
 Plug 'ekalinin/dockerfile.vim'
-Plug 'elixir-editors/vim-elixir'
-Plug 'Glench/Vim-Jinja2-Syntax'
-Plug 'fatih/vim-go'
 Plug 'cespare/vim-toml', { 'branch': 'main' }
-Plug 'godlygeek/tabular' | Plug 'tpope/vim-markdown'
+
+" Markdown and writing
+Plug 'godlygeek/tabular'| Plug 'tpope/vim-markdown'| " Plug 'preservim/vim-markdown'
+"Plug 'vim-pandoc/vim-pandoc'
+"Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
-Plug 'jvirtanen/vim-hcl'
-Plug 'lifepillar/pgsql.vim'
-Plug 'othree/html5.vim'
-Plug 'pangloss/vim-javascript'
-Plug 'MaxMEllon/vim-jsx-pretty'
-Plug 'PotatoesMaster/i3-vim-syntax'
-Plug 'stephpy/vim-yaml'
+Plug 'vimwiki/vimwiki'
+Plug 'reedes/vim-pencil'
+"Plug 'preservim/vim-colors-pencil'
+
 Plug 'tmux-plugins/vim-tmux'
 Plug 'tpope/vim-git'
 Plug 'tpope/vim-liquid'
 Plug 'tpope/vim-rails'
 Plug 'vim-python/python-syntax'
-Plug 'vim-ruby/vim-ruby'
-Plug 'wgwoods/vim-systemd-syntax'
-Plug 'towolf/vim-helm'
-Plug 'hashivim/vim-terraform'
-
-" vimWiki
-Plug 'vimwiki/vimwiki'
 
 " auto pairs
 Plug 'chun-yang/auto-pairs'
@@ -320,8 +293,12 @@ xnoremap <silent> s* "sy:let @/=@s<CR>cgn
 map <Leader><Space> :let @/=''<CR>
 
 " Format paragraph (selected or not) to 80 character lines.
-nnoremap <Leader>g gqap
-xnoremap <Leader>g gqa
+"nnoremap <Leader>g gqap
+"xnoremap <Leader>g gqa
+
+nnoremap <silent> Q gqap
+xnoremap <silent> Q gq
+nnoremap <silent> <leader>Q vapJgqap
 
 " Prevent x and the delete key from overriding what's in the clipboard.
 noremap x "_x
@@ -665,7 +642,59 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 " vimwiki/vimWiki
 "..............................................................................
 
-let g:vimwiki_list = [{'path': '~/mywiki/'}]
+let g:vimwiki_list = [{'path': '~/mywiki/', 'syntax': 'markdown', 'ext': '.md'}]
+
+
+"..............................................................................
+"vim-pandoc
+"..............................................................................
+
+"let g:pandoc#filetypes#pandoc_markdown = 1
+"let g:pandoc#keyboard#use_default_mappings = 1
+"let g:pandoc#modules#enabled = ["formatting","folding","command","templates","keyboard","toc","spell","configuration"]
+"let g:pandoc#formatting#textwidth = 80
+"let g:pandoc#formatting#mode ="hA"
+"let g:pandoc#formatting#smart_autoformat_on_cursormoved = 1
+"let g:pandoc#folding#level = 2
+"let g:pandoc#folding#mode ="relative"
+"let g:pandoc#after#modules#enabled = ["nrrwrgn","tablemode"]
+"let g:pandoc#completion#bib#mode = 'citeproc'
+"let g:pandoc#syntax#colorcolumn = 1
+"let g:pandoc#spell#enabled = 1
+"let g:pandoc#toc#position ="left"
+"let g:pandoc#syntax#conceal#use = 1
+
+
+"..............................................................................
+"vim-Pencil
+"..............................................................................
+
+let g:pencil#wrapModeDefault = 'soft'   " default is 'hard'
+let g:pencil#cursorwrap = 0     " 0=disable, 1=enable (def)
+let g:pencil#textwidth = 80
+let g:pencil#joinspaces = 0     " 0=one_space (def), 1=two_spaces
+let g:pencil#conceallevel = 3     " 0=disable, 1=one char, 2=hide char, 3=hide all (def)
+let g:pencil#concealcursor = 'c'  " n=normal, v=visual, i=insert, c=command (def)
+let g:pencil#autoformat = 0      " 0=disable, 1=enable (def)
+let g:pencil#map#suspend_af = '/' "default is no mapping
+
+augroup pencil
+  autocmd!
+  autocmd FileType markdown,md call pencil#init({'wrap': 'hard'})
+  autocmd FileType text      call pencil#init({'wrap': 'hard'})
+augroup END
+
+
+"..............................................................................
+"vim-colors-pencil
+"..............................................................................
+
+"let g:pencil_higher_contrast_ui = 0   " 0=low (def), 1=high
+"let g:pencil_neutral_headings = 1   " 0=blue (def), 1=normal
+"let g:pencil_neutral_code_bg = 1   " 0=gray (def), 1=normal
+"let g:pencil_gutter_color = 1      " 0=mono (def), 1=color
+"let g:pencil_spell_undercurl = 1       " 0=underline, 1=undercurl (def)
+"let g:pencil_terminal_italics = 1
 
 " .............................................................................
 " janko/vim-test
