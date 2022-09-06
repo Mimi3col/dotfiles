@@ -5,7 +5,7 @@ autoload -U colors && colors
 stty stop undef
 
 # Enable comments when working in an interactive shell.
-setopt interactive_comments
+#setopt interactive_comments
 
 # Prompt. Using single quotes around the PROMPT is very important, otherwise
 # the git branch will always be empty. Using single quotes delays the
@@ -19,8 +19,10 @@ setopt interactive_comments
 #
 #    [ -n "${branch}" ] && echo " (${branch})"
 #}
-setopt PROMPT_SUBST
+#setopt PROMPT_SUBST
 #PROMPT='%B%{$fg[green]%}%n@%{$fg[green]%}%M %{$fg[blue]%}%~%{$fg[yellow]%}$(git_prompt)%{$reset_color%} %(?.$.%{$fg[red]%}$)%b '
+
+export PATH="$PATH:/usr/local/bin/"
 
 eval "$(starship init zsh)"
 
