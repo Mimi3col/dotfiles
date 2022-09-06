@@ -6,3 +6,5 @@
 
 [include]
 	path = ~/.gitconfig.user
+[user]
+	email = 58057301+Mimi3col@users.noreply.github.com
