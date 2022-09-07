@@ -8,3 +8,8 @@
 	path = ~/.gitconfig.user
 [user]
 	email = 58057301+Mimi3col@users.noreply.github.com
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true

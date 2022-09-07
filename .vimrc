@@ -90,7 +90,7 @@ Plug 'godlygeek/tabular'| Plug 'tpope/vim-markdown'| " Plug 'preservim/vim-markd
 "Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
 Plug 'vimwiki/vimwiki'
-Plug 'reedes/vim-pencil'
+"Plug 'reedes/vim-pencil'
 "Plug 'preservim/vim-colors-pencil'
 
 Plug 'tmux-plugins/vim-tmux'
@@ -669,20 +669,20 @@ let g:vimwiki_list = [{'path': '~/mywiki/', 'syntax': 'markdown', 'ext': '.md'}]
 "vim-Pencil
 "..............................................................................
 
-let g:pencil#wrapModeDefault = 'soft'   " default is 'hard'
-let g:pencil#cursorwrap = 0     " 0=disable, 1=enable (def)
-let g:pencil#textwidth = 80
-let g:pencil#joinspaces = 0     " 0=one_space (def), 1=two_spaces
-let g:pencil#conceallevel = 3     " 0=disable, 1=one char, 2=hide char, 3=hide all (def)
-let g:pencil#concealcursor = 'n'  " n=normal, v=visual, i=insert, c=command (def)
-let g:pencil#autoformat = 0      " 0=disable, 1=enable (def)
-let g:pencil#map#suspend_af = '/' "default is no mapping
+" let g:pencil#wrapModeDefault = 'soft'   " default is 'hard'
+" let g:pencil#cursorwrap = 0     " 0=disable, 1=enable (def)
+" let g:pencil#textwidth = 80
+" let g:pencil#joinspaces = 0     " 0=one_space (def), 1=two_spaces
+" let g:pencil#conceallevel = 3     " 0=disable, 1=one char, 2=hide char, 3=hide all (def)
+" let g:pencil#concealcursor = 'n'  " n=normal, v=visual, i=insert, c=command (def)
+" let g:pencil#autoformat = 0      " 0=disable, 1=enable (def)
+" let g:pencil#map#suspend_af = '/' "default is no mapping
 
-augroup pencil
-  autocmd!
-  autocmd FileType markdown,md call pencil#init({'wrap': 'hard'})
-  autocmd FileType text      call pencil#init({'wrap': 'hard'})
-augroup END
+" augroup pencil
+"   autocmd!
+"   autocmd FileType markdown,md call pencil#init({'wrap': 'hard'})
+"   autocmd FileType text      call pencil#init({'wrap': 'hard'})
+" augroup END
 
 
 "..............................................................................
@@ -695,6 +695,15 @@ augroup END
 "let g:pencil_gutter_color = 1      " 0=mono (def), 1=color
 "let g:pencil_spell_undercurl = 1       " 0=underline, 1=undercurl (def)
 "let g:pencil_terminal_italics = 1
+
+"..............................................................................
+"
+"..............................................................................
+
+let g:markdown_fenced_languages = ['html', 'python', 'bash=sh']
+let g:markdown_syntax_conceal = 2
+
+
 
 " .............................................................................
 " janko/vim-test
