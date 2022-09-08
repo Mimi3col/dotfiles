@@ -85,7 +85,8 @@ Plug 'ekalinin/dockerfile.vim'
 Plug 'cespare/vim-toml', { 'branch': 'main' }
 
 " Markdown and writing
-Plug 'godlygeek/tabular'| Plug 'tpope/vim-markdown'| " Plug 'preservim/vim-markdown'
+Plug 'godlygeek/tabular'| "Plug 'tpope/vim-markdown'
+Plug 'preservim/vim-markdown'
 "Plug 'vim-pandoc/vim-pandoc'
 "Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
@@ -697,12 +698,15 @@ let g:vimwiki_list = [{'path': '~/mywiki/', 'syntax': 'markdown', 'ext': '.md'}]
 "let g:pencil_terminal_italics = 1
 
 "..............................................................................
-"
+" preservim/vim-Markdown
 "..............................................................................
 
-let g:markdown_fenced_languages = ['html', 'python', 'bash=sh']
-let g:markdown_syntax_conceal = 2
-
+let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_toc_autofit = 1
+let g:vim_markdown_math = 1
+let g:vim_markdown_frontmatter = 1
+let g:vim_markdown_strikethrough = 1
+let g:vim_markdown_new_list_item_indent = 2
 
 
 " .............................................................................
